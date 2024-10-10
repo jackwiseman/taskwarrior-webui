@@ -8,8 +8,9 @@ COPY ./backend /src/backend
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 COPY ./nginx/server.conf /etc/nginx/conf.d/default.conf
 COPY ./docker/start.sh /start.sh
+COPY ./docker/setup-sync.sh /setup-sync.sh
 
-ENV TASKRC="/.taskrc"
+ENV TASKRC="/taskrc"
 ENV TASKDATA="/.task"
 
 # Fix npm build
@@ -28,8 +29,5 @@ RUN cd /src/backend && npm ci \
 	&& rm -r /src/backend/src
 
 EXPOSE 80
-
-# Taskwarrior data volume
-VOLUME [ "/.task", "/.taskrc" ]
 
 CMD ["/start.sh"]

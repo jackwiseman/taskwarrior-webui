@@ -1,0 +1,11 @@
+services:
+  webui:
+    image: webui:latest
+    container_name: webui
+    ports:
+      - '8080:80'
+    restart: unless-stopped
+    environment:
+      URL: 'https://tasks.wiseman.sh'
+      ENCRYPTION_SECRET: 'test'
+      CLIENT_ID: '66d2e46c-3a45-40de-a1b6-3466631c14e6'
