@@ -9,7 +9,7 @@ echo "creating taskrc..."
 
 touch /taskrc
 
-task config sync.server.origin "$URL" <<EOF
+task config sync.server.url "$URL" <<EOF
 y
 EOF
 
