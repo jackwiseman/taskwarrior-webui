@@ -1,6 +1,6 @@
-FROM alpine:latest
+FROM alpine:3.20
 
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
 RUN apk --no-cache add nodejs npm nginx task3 python3 build-base
 
 COPY ./frontend /src/frontend
