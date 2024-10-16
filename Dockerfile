@@ -30,4 +30,10 @@ RUN cd /src/backend && npm ci \
 
 EXPOSE 80
 
+# sync task data every minute
+RUN touch crontab.tmp \
+	&& echo "* * * * * /usr/bin/task sync >> /var/log/task_log.txt 2>&1" > crontab.tmp \
+	&& crontab crontab.tmp \
+	&& rm crontab.tmp
+
 CMD ["/start.sh"]
